@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(uuid()) @db.Uuid
+  fullname String
+  handle   String
+  email    String  @unique
+  password String
+  exp      Int
+  @@map("users")
+}
+
+model Chapter {
+  id          String   @id @default(uuid()) @db.Uuid
+  title       String
+  description String
+  imageLink   String
+  sections    Section[]
+  @@map("chapters")
+}
+
+model Section {
+  level     Int      @id
+  chapterId String   @db.Uuid
+  chapter   Chapter  @relation(fields: [chapterId], references: [id])
+  questions Question[]
+  @@map("sections")
+}
+
+model Question {
+  id           Int      @id @default(autoincrement())
+  sectionId    Int
+  rightOption  Int
+  title        String
+  description  String
+  section      Section  @relation(fields: [sectionId], references: [level])
+  options      Option[]
+  @@map("questions")
+}
+
+model Option {
+  id          Int      @id @default(autoincrement())
+  questionId  Int
+  optionValue String
+  question    Question  @relation(fields: [questionId], references: [id])
+  @@map("options")
+}

@@ -1,0 +1,17 @@
+[
+    {
+      "name": "Home",
+      "link": "/dashboard",
+      "icon": "mdi:home"
+    },
+    {
+      "name": "Chapters",
+      "link": "/chapters",
+      "icon": "mdi:list-box"
+    },
+    {
+      "name": "Users",
+      "link": "/users",
+      "icon": "mdi:account-group"
+    }
+  ]
