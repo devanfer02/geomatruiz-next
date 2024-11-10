@@ -1,10 +1,25 @@
 import { prisma } from "@/lib/prisma"
 
-export const fetchAllChapters = async () => {
+export const fetchAllChapters = async (): Promise<[Chapter[] | null, unknown]> => {
     try {
         const chapters = await prisma.chapter.findMany()
         
         return [chapters, null]
+    } catch (err) {
+        console.error(err)
+        return [null, err]
+    }
+}
+
+export const fetchChapterByID = async (id: string): Promise<[Chapter| null, unknown]> => {
+    try {
+        const chapter = await prisma.chapter.findFirst({
+            where:{
+                id: id 
+            }
+        })
+
+        return [chapter, null]
     } catch (err) {
         console.error(err)
         return [null, err]
@@ -48,7 +63,7 @@ export const updateChapter = async (chapterId: string, chapter: ChapterRequest) 
     }
 }
 
-export const deleteChapter = async (chapterId: string, chapter: ChapterRequest) => {
+export const deleteChapter = async (chapterId: string) => {
     try {
         const deletedChapter = await prisma.chapter.delete({
             where: {

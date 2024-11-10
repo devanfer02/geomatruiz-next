@@ -1,14 +1,12 @@
 "use client"
 
-import { Icon } from "@iconify-icon/react"
+import { Icon } from "@iconify/react"
 import navs from '@/constants/navs.json'
 import Link from 'next/link'
 import { usePathname } from "next/navigation"
 
 export default function SideBar() {
   const path = usePathname()
-
-  console.log(path)
 
   return (
       <nav
