@@ -11,6 +11,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -25,6 +26,7 @@ model User {
 
 model Chapter {
   id          String   @id @default(uuid()) @db.Uuid
+  order       Int 
   title       String
   description String
   imageLink   String
@@ -33,20 +35,22 @@ model Chapter {
 }
 
 model Section {
-  level     Int      @id
+  level     Int      
   chapterId String   @db.Uuid
   chapter   Chapter  @relation(fields: [chapterId], references: [id])
   questions Question[]
+  @@id([level, chapterId])
   @@map("sections")
 }
 
 model Question {
   id           Int      @id @default(autoincrement())
-  sectionId    Int
+  level        Int 
+  chapterId    String   @db.Uuid
   rightOption  Int
   title        String
   description  String
-  section      Section  @relation(fields: [sectionId], references: [level])
+  section      Section  @relation(fields: [level, chapterId], references: [level, chapterId])
   options      Option[]
   @@map("questions")
 }

@@ -36,8 +36,9 @@ export default function ChapterTable() {
         </thead>
         <tbody>
         { chapters.map((chapter, index) => (
-          <tr className="border-b bg-ltccrem group" key={index}>
-              <th scope="row" className="px-6 py-4 font-medium text-ltcbrown whitespace-nowrap ">
+          <tr className="border-b bg-ltccrem group duration-300 ease-in-out  cursor-pointer" key={index}>
+            
+              <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap ">
                   { index + 1 }
               </th>
               <td className="px-6 py-4 text-center"> 
@@ -54,10 +55,13 @@ export default function ChapterTable() {
                 </span>
               </td>
               <td className="px-6 py-4 text-center flex text-white font-semibold justify-center items-center">
-                  <a href={`/chapters/edit/${chapter.id}`} className="bg-green-600 hover:bg-green-900 duration-300 ease-in-out mx-1 px-4 py-2 rounded-md">
-                    Edit Chapter
-                  </a>
-                  <DeleteButton id={chapter.id}/>
+                <a href={`/chapters/${chapter.id}/detail`} className="bg-blue-600 hover:bg-blue-900 duration-300 ease-in-out mx-1 px-4 py-2 rounded-md">
+                  Show
+                </a>
+                <a href={`/chapters/${chapter.id}/edit`} className="bg-green-600 hover:bg-green-900 duration-300 ease-in-out mx-1 px-4 py-2 rounded-md">
+                  Edit 
+                </a>
+                <DeleteButton id={chapter.id}/>
               </td>
           </tr>
         ))}

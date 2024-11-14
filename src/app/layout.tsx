@@ -3,7 +3,7 @@ import "./globals.css";
 import SideBar from "@/components/sidebar";
 
 export const metadata: Metadata = {
-  title: "Litacrtes CMS",
+  title: "Litecartes CMS",
   description: "Litecartes CMS made with NextJS 14",
 };
 

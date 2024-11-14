@@ -50,6 +50,16 @@ export default function AddForm() {
       </div>
       <div className="mb-3 w-full">
         <label htmlFor="" className="block text-ltcbrown font-semibold">
+          Urutan
+        </label>
+        <input 
+          type="number" 
+          className="border border-ltcbrown p-2 w-full rounded-lg" 
+          {...register("order", { required: "Number is required"})}
+          />
+      </div>
+      <div className="mb-3 w-full">
+        <label htmlFor="" className="block text-ltcbrown font-semibold">
           Image 
         </label>
         <input type="text" className="border border-ltcbrown p-2 w-full rounded-lg" />

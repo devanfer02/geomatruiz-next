@@ -32,7 +32,8 @@ export const createChapter = async (chapter: ChapterRequest) => {
             data: {
                 title: chapter.title,
                 description: chapter.description,
-                imageLink: ''
+                imageLink: '',
+                order: chapter.order,
             }
         })
 
@@ -52,7 +53,8 @@ export const updateChapter = async (chapterId: string, chapter: ChapterRequest) 
             data: {
                 title: chapter.title,
                 description: chapter.description,
-                imageLink: ''
+                imageLink: '',
+                order: chapter.order,
             }
         })
 

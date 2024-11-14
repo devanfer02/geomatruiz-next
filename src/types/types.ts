@@ -13,7 +13,7 @@ type Chapter = {
 
 type Section = {
     level: number;
-    chapter_id: string;
+    chapterId: string;
 }
 
 type Question = {

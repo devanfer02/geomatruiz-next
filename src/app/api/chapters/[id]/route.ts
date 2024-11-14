@@ -8,12 +8,13 @@ interface ChapterParam {
 }
 
 export async function PUT(request: NextRequest, { params}: ChapterParam) {
-    const { title, description } = await request.json()
+    const { title, description, order } = await request.json()
     const { id } = await params
 
     const [updatedChapter, error] = await updateChapter(id, {
         title,
-        description
+        description,
+        order
     })
 
     

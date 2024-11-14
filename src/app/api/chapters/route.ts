@@ -23,17 +23,19 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-    const { title, description } = await request.json()
+    const { title, description, order } = await request.json()
 
     try {
         const chapter: ChapterRequest = {
             title, 
-            description
+            description,
+            order: Number(order)
         }
     
         const chapterSchema = z.object({
             title: z.string().min(1, 'Title is required'),
-            description: z.string().min(1, 'Description is required')
+            description: z.string().min(1, 'Description is required'),
+            order: z.number().min(1, "Minimal order number is 1")
         })
     
         chapterSchema.parse(chapter)

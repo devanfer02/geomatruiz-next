@@ -65,7 +65,7 @@ export default function EditForm({chapter} : EditFormParam ) {
           className="bg-ltcbrown px-4 py-2 rounded-lg text-white border border-ltcbrown hover:bg-white hover:text-ltcbrown duration-200 
           ease-in-out"
           >
-          Tambah
+          Update
         </button>
       </div>
     </form>   
