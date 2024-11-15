@@ -1,3 +1,4 @@
+import QuestionsTable from "@/components/table/questions/page";
 import { fetchChapterByID } from "@/services/chapters";
 import { use } from "react";
 

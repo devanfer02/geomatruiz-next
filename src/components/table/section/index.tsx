@@ -47,7 +47,7 @@ export default function SectionTable({id}: SectionTableParam) {
                   <a href={`/chapters/${id}/detail/sections/${section.level}`} className="bg-blue-500 mx-1 px-4 py-2 rounded-md">
                     Show
                   </a>
-                  <a href={`/chapters/${id}/detail/sections/edit/${section.level}`} className="bg-green-600 hover:bg-green-900 duration-300 ease-in-out mx-1 px-4 py-2 rounded-md">
+                  <a href={`/chapters/${id}/detail/sections/${section.level}/edit`} className="bg-green-600 hover:bg-green-900 duration-300 ease-in-out mx-1 px-4 py-2 rounded-md">
                     Edit
                   </a>
                   

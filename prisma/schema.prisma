@@ -9,50 +9,54 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id       String  @id @default(uuid()) @db.Uuid
+  id       String @id @default(uuid()) @db.Uuid
   fullname String
   handle   String
-  email    String  @unique
+  email    String @unique
   password String
   exp      Int
+
   @@map("users")
 }
 
 model Chapter {
-  id          String   @id @default(uuid()) @db.Uuid
-  order       Int 
+  id          String    @id @default(uuid()) @db.Uuid
+  order       Int
   title       String
   description String
   imageLink   String
   sections    Section[]
+
   @@map("chapters")
 }
 
 model Section {
-  level     Int      
-  chapterId String   @db.Uuid
-  chapter   Chapter  @relation(fields: [chapterId], references: [id])
+  id        Int        @id @default(autoincrement())
+  level     Int
+  chapterId String     @db.Uuid
+  chapter   Chapter    @relation(fields: [chapterId], references: [id])
   questions Question[]
-  @@id([level, chapterId])
+
   @@map("sections")
 }
 
 model Question {
-  id           Int      @id @default(autoincrement())
-  level        Int 
-  chapterId    String   @db.Uuid
-  rightOption  Int
-  title        String
-  description  String
-  question     String 
-  section      Section  @relation(fields: [level, chapterId], references: [level, chapterId])
-  options      Option[]
+  id          Int      @id @default(autoincrement())
+  sectionId   Int
+  chapterId   String   @db.Uuid
+  rightOption Int
+  title       String
+  description String
+  question    String
+  section     Section  @relation(fields: [sectionId], references: [id])
+  options     Option[]
+
   @@map("questions")
 }
 
@@ -60,6 +64,7 @@ model Option {
   id          Int      @id @default(autoincrement())
   questionId  Int
   optionValue String
-  question    Question  @relation(fields: [questionId], references: [id])
+  question    Question @relation(fields: [questionId], references: [id])
+
   @@map("options")
 }
