@@ -50,6 +50,7 @@ model Question {
   rightOption  Int
   title        String
   description  String
+  question     String 
   section      Section  @relation(fields: [level, chapterId], references: [level, chapterId])
   options      Option[]
   @@map("questions")

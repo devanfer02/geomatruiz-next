@@ -2,7 +2,11 @@ import { prisma } from "@/lib/prisma"
 
 export const fetchAllChapters = async (): Promise<[Chapter[] | null, unknown]> => {
     try {
-        const chapters = await prisma.chapter.findMany()
+        const chapters = await prisma.chapter.findMany({
+            orderBy: {
+                order: 'asc'
+            }
+        })
         
         return [chapters, null]
     } catch (err) {

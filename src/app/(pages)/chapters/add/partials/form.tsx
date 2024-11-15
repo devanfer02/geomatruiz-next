@@ -1,5 +1,7 @@
 'use client';
 
+import Input from "@/components/input";
+import Textarea from "@/components/input/textarea";
 import axios from "axios";
 import { redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -26,38 +28,9 @@ export default function AddForm() {
 
   return (
     <form action="" onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-3 w-full">
-        <label htmlFor="" className="block text-ltcbrown font-semibold">
-          Judul
-        </label>
-        <input 
-          type="text" 
-          className="border border-ltcbrown p-2 w-full rounded-lg" 
-          {...register("title", { required: "Title is required"})}
-          />
-      </div>
-      <div className="mb-3 w-full">
-        <label htmlFor="" className="block text-ltcbrown font-semibold">
-          Deskripsi
-        </label>
-        <textarea 
-          className="border border-ltcbrown p-2 w-full rounded-lg resize-none"
-          rows={8}
-          cols={10}
-          {...register("description", { required: "Description is required"})}
-        >
-        </textarea>
-      </div>
-      <div className="mb-3 w-full">
-        <label htmlFor="" className="block text-ltcbrown font-semibold">
-          Urutan
-        </label>
-        <input 
-          type="number" 
-          className="border border-ltcbrown p-2 w-full rounded-lg" 
-          {...register("order", { required: "Number is required"})}
-          />
-      </div>
+      <Input<ChapterRequest> label="Judul" name="title" type="text" register={register} requireMsg="Title is required"/>
+      <Textarea<ChapterRequest> label="Deskripsi" name="description" type="text" register={register} requireMsg="Description is required"/>
+      <Input<ChapterRequest> label="Urutan" name="order" type="number" register={register} requireMsg="Order is required"/>
       <div className="mb-3 w-full">
         <label htmlFor="" className="block text-ltcbrown font-semibold">
           Image 
