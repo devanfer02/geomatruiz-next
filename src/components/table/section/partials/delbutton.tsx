@@ -4,14 +4,15 @@ import axios from "axios";
 import { redirect } from "next/navigation";
 
 interface DeleteButtonParams {
-  id: string 
+  id: string;
+  sectionId: number;
 }
 
-export default function DeleteButton({ id }: DeleteButtonParams) {
+export default function DeleteButton({ id, sectionId }: DeleteButtonParams) {
 
   const deleteChapter = async (id: string) => {
     try {
-      const res = await axios.delete(`/api/chapters/${id}`)
+      const res = await axios.delete(`/api/chapters/${id}/sections/${sectionId}`)
     
       if (res.status != 200) {
         alert("ERR: " + res.data.message)
@@ -22,7 +23,7 @@ export default function DeleteButton({ id }: DeleteButtonParams) {
       console.log(err)
     }
     
-    redirect("/chapters")
+    redirect(`/chapters/${id}/detail`)
   }
 
 

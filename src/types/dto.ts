@@ -11,5 +11,9 @@ type SectionRequest = {
 }
 
 type QuestionRequest = {
-
+    title: string;
+    imageLink: string;
+    description: string;
+    question: string;
+    [key: string]: string;
 }

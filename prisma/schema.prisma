@@ -47,15 +47,16 @@ model Section {
 }
 
 model Question {
-  id          Int      @id @default(autoincrement())
-  sectionId   Int
-  chapterId   String   @db.Uuid
-  rightOption Int
-  title       String
-  description String
-  question    String
-  section     Section  @relation(fields: [sectionId], references: [id])
-  options     Option[]
+  id            Int      @id @default(autoincrement())
+  sectionId     Int
+  rightOptionId Int?       @unique
+  title         String
+  imageLink     String
+  description   String
+  question      String
+  section       Section  @relation(fields: [sectionId], references: [id])
+  rightOption   Option?   @relation("RightOpt", fields: [rightOptionId], references: [id])
+  options       Option[] @relation("QuestionOpts")
 
   @@map("questions")
 }
@@ -64,7 +65,8 @@ model Option {
   id          Int      @id @default(autoincrement())
   questionId  Int
   optionValue String
-  question    Question @relation(fields: [questionId], references: [id])
+  question    Question @relation("QuestionOpts", fields: [questionId], references: [id])
+  isRightOptFor Question? @relation("RightOpt") 
 
   @@map("options")
 }

@@ -14,7 +14,7 @@ export async function PUT(req: NextRequest, { params}: SectionParam) {
 
     const [updatedSection, error] = await updateSection(Number(sectionId), {
         chapterId: id,
-        level: level
+        level: Number(level)
     })
 
     

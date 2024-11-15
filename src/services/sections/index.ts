@@ -22,7 +22,7 @@ export const fetchSectionsByChapterID = async (chapterId: string): Promise<[Sect
     }
 }
 
-export const fetchSectionByID = async (id: number, chapterId: string): Promise<[Section | null, unknown]> => {
+export const fetchSectionByID = async (id: number): Promise<[Section | null, unknown]> => {
     try {
         const section = await prisma.section.findFirst({
             where: {

@@ -44,13 +44,13 @@ export default function SectionTable({id}: SectionTableParam) {
                 { section.level }
               </td>
               <td className="px-6 py-4 text-center flex text-white font-semibold justify-center items-center">
-                  <a href={`/chapters/${id}/detail/sections/${section.level}`} className="bg-blue-500 mx-1 px-4 py-2 rounded-md">
+                  <a href={`/chapters/${id}/detail/sections/${section.id}`} className="bg-blue-500 mx-1 px-4 py-2 rounded-md">
                     Show
                   </a>
-                  <a href={`/chapters/${id}/detail/sections/${section.level}/edit`} className="bg-green-600 hover:bg-green-900 duration-300 ease-in-out mx-1 px-4 py-2 rounded-md">
+                  <a href={`/chapters/${id}/detail/sections/${section.id}/edit`} className="bg-green-600 hover:bg-green-900 duration-300 ease-in-out mx-1 px-4 py-2 rounded-md">
                     Edit
                   </a>
-                  
+                  <DeleteButton id={id} sectionId={section.id}/>
               </td>
           </tr>
         ))}

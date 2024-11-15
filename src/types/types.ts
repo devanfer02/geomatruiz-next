@@ -19,10 +19,12 @@ type Section = {
 
 type Question = {
     id: number;
-    section_Id: number;
-    right_option: number;
+    sectionId: number;
+    rightOptionId: number | null;
     title: string;
+    imageLink: string;
     description: string;
+    question: string;
 }
 
 type Option = {

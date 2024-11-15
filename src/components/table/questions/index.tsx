@@ -24,11 +24,20 @@ export default function QuestionsTable({id}: SectionTableParam) {
                 <th scope="col" className="px-6 py-3">
                     No 
                 </th>
-                <th scope="col" className="px-6 py-3 text-center">
-                    Level 
+                <th scope=  "col" className="px-6 py-3 text-center">
+                    Title
                 </th>
                 <th scope="col" className="px-6 py-3 text-center">
-                    Action
+                    Description
+                </th>
+                <th scope="col" className="px-6 py-3 text-center">
+                    Question
+                </th>
+                <th scope="col" className="px-6 py-3 text-center">
+                    Image
+                </th>
+                <th scope="col" className="px-6 py-3 text-center">
+                    Actions
                 </th>
             </tr>
         </thead>
@@ -38,6 +47,15 @@ export default function QuestionsTable({id}: SectionTableParam) {
           <tr className="border-b bg-ltccrem group duration-300 ease-in-out hover:text-white hover:bg-ltcbrown" key={index}>
               <td scope="row" className="px-6 py-4 font-medium whitespace-nowrap ">
                   { index + 1 }
+              </td>
+              <td className="px-6 py-4 text-center"> 
+                { section.level }
+              </td>
+              <td className="px-6 py-4 text-center"> 
+                { section.level }
+              </td>
+              <td className="px-6 py-4 text-center"> 
+                { section.level }
               </td>
               <td className="px-6 py-4 text-center"> 
                 { section.level }

@@ -11,7 +11,7 @@ type AddSectionProps =  {
 export default async function EditSection({params}: AddSectionProps) {
   const { id, sectionId } = await params 
 
-  const [ section, err ] = await fetchSectionByID(sectionId, id)
+  const [ section, err ] = await fetchSectionByID(sectionId)
 
   if (section == null) {
     return (
